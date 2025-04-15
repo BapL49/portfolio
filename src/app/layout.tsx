@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins, Nunito } from "next/font/google";
+import "@radix-ui/themes/styles.css";
 import "./globals.css";
 import Script from "next/script";
+import { Theme } from "@radix-ui/themes";
 
-const geistSans = Geist({
-      variable: "--font-geist-sans",
+const poppins = Poppins({
+      weight: ["300", "400", "500", "700"],
+      variable: "--font-poppins",
       subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-      variable: "--font-geist-mono",
+const nunito = Nunito({
+      variable: "--font-nunito",
       subsets: ["latin"],
 });
 
@@ -26,13 +29,18 @@ export default function RootLayout({
       return (
             <html
                   lang="fr"
-                  suppressHydrationWarning>
+                  suppressHydrationWarning
+                  className={`${poppins.variable} ${nunito.variable}`}>
                   <head>
                         {(process.env.NODE_ENV === "development" || process.env.VERCEL_ENV === "preview") && (
                               <Script src="https://unpkg.com/react-scan/dist/auto.global.js" />
                         )}
                   </head>
-                  <body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body>
+                  <body>
+                        <Theme>
+                              <main>{children}</main>
+                        </Theme>
+                  </body>
             </html>
       );
 }

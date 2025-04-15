@@ -1,0 +1,6 @@
+.radix-themes {
+      --default-font-family: var(--font-nunito);
+      --heading-font-family: var(--font-poppins);
+      --quote-font-family: var(--font-nunito);
+      --em-font-family: var(--font-nunito);
+}
